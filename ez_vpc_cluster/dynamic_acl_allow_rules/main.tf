@@ -7,7 +7,7 @@ locals {
   # Rules to allow all traffic to and from edge VPC CIDR blocks
   allow_rules = flatten([
     # For each zone 
-    for zone in ["zone-1", "zone-2", "zone-3"] :
+    for zone in ["zone-1"] :
     [
       # For each subnet in that zone
       for subnet in var.subnets[zone] :
