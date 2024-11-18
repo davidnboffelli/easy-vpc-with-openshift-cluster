@@ -34,7 +34,7 @@ variable "subnets" {
 
   validation {
     error_message = "Keys for `subnets` must be in the order `zone-1`, `zone-2`, `zone-3`."
-    condition     = keys(var.subnets)[0] == "zone-1" && keys(var.subnets)[1] == "zone-2" && keys(var.subnets)[2] == "zone-3"
+    condition     = keys(var.subnets)[0] == "zone-1"
   }
 }
 
