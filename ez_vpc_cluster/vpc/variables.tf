@@ -70,17 +70,13 @@ variable "address_prefixes" {
   description = "OPTIONAL - IP range that will be defined for the VPC for a certain location. Use only with manual address prefixes"
   type = object({
     zone-1 = optional(list(string))
-    zone-2 = optional(list(string))
-    zone-3 = optional(list(string))
   })
   default = {
     zone-1 = null
-    zone-2 = null
-    zone-3 = null
   }
   validation {
-    error_message = "Keys for `use_public_gateways` must be in the order `zone-1`, `zone-2`, `zone-3`."
-    condition     = var.address_prefixes == null ? true : (keys(var.address_prefixes)[0] == "zone-1" && keys(var.address_prefixes)[1] == "zone-2" && keys(var.address_prefixes)[2] == "zone-3")
+    error_message = "Keys for `use_public_gateways` must be in the order `zone-1`."
+    condition     = var.address_prefixes == null ? true : (keys(var.address_prefixes)[0] == "zone-1")
   }
 }
 
@@ -222,18 +218,14 @@ variable "use_public_gateways" {
   description = "Create a public gateway in any of the three zones with `true`."
   type = object({
     zone-1 = optional(bool)
-    zone-2 = optional(bool)
-    zone-3 = optional(bool)
   })
   default = {
     zone-1 = true
-    zone-2 = false
-    zone-3 = false
   }
 
   validation {
-    error_message = "Keys for `use_public_gateways` must be in the order `zone-1`, `zone-2`, `zone-3`."
-    condition     = keys(var.use_public_gateways)[0] == "zone-1" && keys(var.use_public_gateways)[1] == "zone-2" && keys(var.use_public_gateways)[2] == "zone-3"
+    error_message = "Keys for `use_public_gateways` must be in the order `zone-1`."
+    condition     = keys(var.use_public_gateways)[0] == "zone-1" 
   }
 }
 
@@ -253,18 +245,6 @@ variable "subnets" {
       public_gateway = optional(bool)
       acl_name       = string
     }))
-    zone-2 = list(object({
-      name           = string
-      cidr           = string
-      public_gateway = optional(bool)
-      acl_name       = string
-    }))
-    zone-3 = list(object({
-      name           = string
-      cidr           = string
-      public_gateway = optional(bool)
-      acl_name       = string
-    }))
   })
 
   default = {
@@ -275,28 +255,12 @@ variable "subnets" {
         public_gateway = true
         acl_name       = "vpc-acl"
       }
-    ],
-    zone-2 = [
-      {
-        name           = "subnet-b"
-        cidr           = "10.20.10.0/24"
-        public_gateway = true
-        acl_name       = "vpc-acl"
-      }
-    ],
-    zone-3 = [
-      {
-        name           = "subnet-c"
-        cidr           = "10.30.10.0/24"
-        public_gateway = false
-        acl_name       = "vpc-acl"
-      }
     ]
   }
 
   validation {
-    error_message = "Keys for `subnets` must be in the order `zone-1`, `zone-2`, `zone-3`."
-    condition     = keys(var.subnets)[0] == "zone-1" && keys(var.subnets)[1] == "zone-2" && keys(var.subnets)[2] == "zone-3"
+    error_message = "Keys for `subnets` must be in the order `zone-1`."
+    condition     = keys(var.subnets)[0] == "zone-1"
   }
 }
 
