@@ -21,38 +21,12 @@ variable "subnets" {
       vpe            = optional(bool)
       public_gateway = optional(bool)
     }))
-    zone-2 = list(object({
-      name           = string
-      cidr           = string
-      vpe            = optional(bool)
-      public_gateway = optional(bool)
-    }))
-    zone-3 = list(object({
-      name           = string
-      cidr           = string
-      vpe            = optional(bool)
-      public_gateway = optional(bool)
-    }))
   })
   default = {
     zone-1 = [
       {
         name           = "subnet-a"
         cidr           = "10.10.10.0/24"
-        public_gateway = true
-      }
-    ],
-    zone-2 = [
-      {
-        name           = "subnet-b"
-        cidr           = "10.20.10.0/24"
-        public_gateway = true
-      }
-    ],
-    zone-3 = [
-      {
-        name           = "subnet-c"
-        cidr           = "10.30.10.0/24"
         public_gateway = true
       }
     ]

@@ -47,20 +47,6 @@ locals {
         public_gateway = true
       }
     ]
-    # zone-2 = [
-    #   {
-    #     name           = "subnet-zone-2"
-    #     cidr           = "10.20.10.0/24"
-    #     public_gateway = true
-    #   }
-    # ],
-    # zone-3 = [
-    #   {
-    #     name           = "subnet-zone-3"
-    #     cidr           = "10.30.10.0/24"
-    #     public_gateway = true
-    #   }
-    # ]
   })
   ##############################################################################
 
@@ -79,22 +65,6 @@ locals {
         {
           name           = "subnet-zone-1"
           cidr           = "10.10.10.0/24"
-          public_gateway = true
-          acl_name       = "acl"
-        }
-      ],
-      zone-2 = [
-        {
-          name           = "subnet-zone-2"
-          cidr           = "10.20.10.0/24"
-          public_gateway = true
-          acl_name       = "acl"
-        }
-      ],
-      zone-3 = [
-        {
-          name           = "subnet-zone-3"
-          cidr           = "10.30.10.0/24"
           public_gateway = true
           acl_name       = "acl"
         }
@@ -128,8 +98,6 @@ locals {
     ##############################################################################
     use_public_gateways = {
       zone-1 = var.use_public_gateways ? true : false
-      zone-2 = var.use_public_gateways ? true : false
-      zone-3 = var.use_public_gateways ? true : false
     }
     ##############################################################################
 
@@ -151,7 +119,7 @@ locals {
 
     cluster = {
       subnets = [
-        "subnet-zone-1", "subnet-zone-2", "subnet-zone-3"
+        "subnet-zone-1"
       ]
 
       name                            = "${var.prefix}-roks-cluster"
