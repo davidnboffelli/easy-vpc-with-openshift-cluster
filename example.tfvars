@@ -1,7 +1,7 @@
 ibmcloud_api_key                = ""
 TF_VERSION                      = "1.0"
 prefix                          = "ez-multizone-roks"
-region                          = "eu-es"
+region                          = "us-south"
 resource_group                  = "Stemdo_Sandbox"
 tags                            = ["ez-vpc", "multizone-vpc"]
 use_public_gateways             = false
