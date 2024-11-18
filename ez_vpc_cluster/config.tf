@@ -46,21 +46,21 @@ locals {
         cidr           = "10.10.10.0/24"
         public_gateway = true
       }
-    ],
-    zone-2 = [
-      {
-        name           = "subnet-zone-2"
-        cidr           = "10.20.10.0/24"
-        public_gateway = true
-      }
-    ],
-    zone-3 = [
-      {
-        name           = "subnet-zone-3"
-        cidr           = "10.30.10.0/24"
-        public_gateway = true
-      }
     ]
+    # zone-2 = [
+    #   {
+    #     name           = "subnet-zone-2"
+    #     cidr           = "10.20.10.0/24"
+    #     public_gateway = true
+    #   }
+    # ],
+    # zone-3 = [
+    #   {
+    #     name           = "subnet-zone-3"
+    #     cidr           = "10.30.10.0/24"
+    #     public_gateway = true
+    #   }
+    # ]
   })
   ##############################################################################
 
